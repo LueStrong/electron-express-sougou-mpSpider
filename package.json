@@ -1,0 +1,26 @@
+{
+  "name": "pachong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "concurrently": "^4.1.0",
+    "electron": "^3.0.11",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^13.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app-start": "node app",
+    "electron-start": "electron .",
+    "start": "concurrently \"npm run app-start\" \"npm run electron-start\" "
+  },
+  "author": "",
+  "license": "ISC"
+}

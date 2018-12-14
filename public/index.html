@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="never">
+  <link rel="stylesheet" href="./bootstrap.css">
+  <link rel="stylesheet" href="./main.css">
+  <title>公众号视频爬虫</title>
+</head>
+
+<body>
+  <div class="div-body">
+    <div class="">
+      <input type="text" name="url" value="" id="input-url" class="form-control">
+      <button type="button" name="button" id="id-sm" class="btn btn-primary">提交</button>
+	  <button id="id-button-money" class="btn btn-success">捐助作者</button>
+	  <img src="money.png" id="img" class="hide">
+    </div>
+
+
+    <button id="add-list" class="btn btn-primary">add</button>
+
+    <div class="container">
+
+    </div>
+  </div>
+
+  <script>
+    var ajax = function (request) {
+      var r = new XMLHttpRequest()
+      r.open(request.method, request.url, true)
+      if (request.contentType !== undefined) {
+        r.setRequestHeader('Content-Type', request.contentType)
+      }
+      r.onreadystatechange = function (event) {
+        if (r.readyState === 4) {
+          request.callback(r.response)
+        }
+      }
+      if (request.method === 'GET') {
+        r.send()
+      } else {
+        r.send(request.data)
+      }
+    }
+
+    var blogNew = function (form) {
+      var data = JSON.stringify(form)
+      var request = {
+        method: 'POST',
+        url: '/url.json',
+        data: data,
+        contentType: 'application/json',
+        callback: function (response) {
+          console.log('响应', response)
+          var res = JSON.parse(response)
+        }
+      }
+      ajax(request)
+    }
+
+    var bindEvents = function () {
+      var button = document.querySelector('#id-sm')
+      button.addEventListener('click', function () {
+
+        var form = {
+          url: document.querySelector('#input-url').value
+        }
+		
+		if(document.querySelector('#input-url').value == ''){
+			alert('不能什么都不写啊')
+		}
+        console.log('click new', form);
+        blogNew(form)
+		setTimeout("alert('保存成功')", 5000)
+      })
+    }
+    bindEvents()
+  </script>
+  <script src="main.js" charset="utf-8"></script>
+</body>
+
+</html>
