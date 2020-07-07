@@ -7,7 +7,7 @@
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "concurrently": "^4.1.0",
-    "electron": "^3.0.11",
+    "electron": "^7.2.4",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "request": "^2.88.0"
